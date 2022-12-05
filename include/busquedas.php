@@ -7,6 +7,10 @@ function buscarCargo($conexion){
     $sql = "SELECT * FROM cargo";
     return mysqli_query($conexion, $sql);
 }
+function buscarCargoById($conexion, $id){
+    $sql ="SELECT * FROM cargo WHERE id='$id'";
+    return mysqli_query($conexion, $sql);
+}
 function buscarProgramaEstudio($conexion){
     $sql = "SELECT * FROM programa_estudios";
     return mysqli_query($conexion, $sql);
@@ -36,6 +40,9 @@ function buscarDocenteById($conexion, $id){
     return mysqli_query($conexion, $sql);
 }
 
-
+function buscarGeneroById($conexion, $id){
+    $sql = "SELECT *FROM genero WHERE id='$id'";
+    return mysqli_query($conexion, $sql);
+}
 
 ?>
