@@ -21,7 +21,7 @@
     <!-- Custom Theme Style -->
     <link href="Gentella/build/css/custom.min.css" rel="stylesheet">
   </head>
-
+  
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
@@ -30,24 +30,24 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form method="POST" action="operaciones/iniciar_sesion.php">
+            <form method="POST" action ="operaciones/iniciar_sesion.php" >
               <h1>Inicio de Sesión</h1>
               <div>
                 <input type="text" name="usuario" class="form-control" placeholder="Usuario" required="" />
-              </div> 
-              <div>
-                <input type="password" name="password" class="form-control" placeholder="Contraseña" required="" />
               </div>
               <div>
-                <button type="submit">Iniciar Sesión</button>
-                <a class="reset_pass" href="#">Olvidaste tu contraseña?</a>
+                <input type="password"  name = "password" class="form-control" placeholder="Contraseña" required="" />
+              </div>
+              <div>
+              <button type="submit">Iniciar Sesion</button>
+                <a class="reset_pass" href="#">0lvidaste tu contraseña?</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Nuevo en el sitio?
-                  <a href="crear_usuario.php" class="to_register"> Crear Cuenta </a>
+                <p class="change_link">Donde es el sitio?
+                  <a href="crear_usuario.php" class="to_register"> Crear una cuenta</a>
                 </p>
 
                 <div class="clearfix"></div>
@@ -61,8 +61,6 @@
             </form>
           </section>
         </div>
-
-        
       </div>
     </div>
   </body>

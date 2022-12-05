@@ -21,35 +21,34 @@
     <!-- Custom Theme Style -->
     <link href="Gentella/build/css/custom.min.css" rel="stylesheet">
   </head>
-
+  
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
       <div class="login_wrapper">
-
           <section class="login_content">
-            <form action="operaciones/registrar_usuariod.php" method="POST">
-              <h1>Crear Cuenta</h1>
+            <form action="./operaciones/registrar_usuariod.php" method="POST">
+              <h1>Crear Cuenta </h1>
               <div>
                 <input type="text" class="form-control" name="docente" placeholder="docente" required="" />
               </div>
               <div>
-                <input type="text" class="form-control" name="usuario" placeholder="Usuario" required="" />
+                <input type="text" class="form-control" name="usuario" placeholder="usuario" required="" />
               </div>
               <div>
                 <input type="password" class="form-control" name="password" placeholder="Contraseña" required="" />
               </div>
               <div>
-                <button type="submit">Registrar</button>
-                <!--<a class="btn btn-default submit" href="index.html">Registar</a>-->
+                  <button type="submit">Registrar</button>
+                  <!--  <a class="btn btn-default submit" href="index.html">Registrar</a>-->
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Ya tienes una cuenta?
+                <p class="change_link">Ya tienes una cuenta ?
                   <a href="login.php" class="to_register"> Iniciar Sesión </a>
                 </p>
 

@@ -1,7 +1,7 @@
 <?php 
-include "include/conexion.php"; 
-include "include/busquedas.php";
-include "include/verificar_sesion.php";
+include ('./include/conexion.php'); 
+include ('./include/busquedas.php');
+include ('include/verificar_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@ include "include/verificar_sesion.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gentelella Alela! | </title>
+    <title>Estudiantes | </title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -44,7 +44,7 @@ include "include/verificar_sesion.php";
                     <h2>Relacion de Estudiantes</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="estudiante.php" class="btn btn-success">Agregar Nuevo</a>
+                        <a href="estudiante.php" class="btn btn-success"><i class="fa fa-plus-square"> </i> Agregar nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -58,6 +58,7 @@ include "include/verificar_sesion.php";
                           <th>DNI</th>
                           <th>APELLIDOS Y NOMBRES</th>
                           <th>DIRECCION</th>
+                          <th>SECCION</th>
                           <th>CARRERA</th>
                           <th>SEMESTRE</th>
                           <th>Acciones</th>
@@ -73,11 +74,18 @@ include "include/verificar_sesion.php";
                           <td><?php echo $res_b_estudiantes['dni']; ?></td>
                           <td><?php echo $res_b_estudiantes['apellidos_nombres'];  ?></td>
                           <td><?php echo $res_b_estudiantes['direccion']; ?></td>
-                          <td><?php echo $res_b_estudiantes['id_programa_estudios']; ?></td>
-                          <td><?php echo $res_b_estudiantes['id_semestre']; ?></td>
+                          <td><?php echo $res_b_estudiantes['seccion']; ?></td>
+                          <?php 
+                          $b_programa = buscarProgramaById($conexion,$res_b_estudiantes['id_programa_estudios']);
+                          $res_b_id_programa = mysqli_fetch_array($b_programa);
+                          $b_semestre = buscarSemestreById($conexion, $res_b_estudiantes['id_semestre']);
+                          $res_b_id_semestre = mysqli_fetch_array($b_semestre);
+                          ?>
+                          <td><?php echo $res_b_id_programa['nombre']; ?></td>
+                          <td><?php echo $res_b_id_semestre['descripcion']; ?></td>
                           <td>
-                            <a href="editar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-primary">Editar</a>
-                            <a href="operaciones/eliminar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-danger">Eliminar</a>
+                            <a href="editar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
+                            <a href="operaciones/eliminar_estudiante.php?id=<?php echo $res_b_estudiantes['id']; ?>" class="btn btn-danger"><i class="fa fa-trash"> </i> Eliminar</a>
                           </td>
                         </tr>
                         <?php

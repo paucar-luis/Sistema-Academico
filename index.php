@@ -1,8 +1,10 @@
 <?php
-include "include/verificar_sesion.php";
+// Incluimos la conexion
 include "include/conexion.php";
+// Incluimos las busqueda para hacer uso de este
 include "include/busquedas.php";
-
+// Verificamos que el inicio de sesion se haya hecho para que nadie acceda a esta carpeta
+include "include/verificar_sesion.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +14,7 @@ include "include/busquedas.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gentelella Alela! | </title>
+    <title>Sistema Académico IESTPH </title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -38,8 +40,12 @@ include "include/busquedas.php";
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-12">
-              <?php echo $_SESSION['id_usu_sisacad_iesthuanta']; ?>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <!-- Verificamos el inicio de sesion -->
+              <!--<?php echo $_SESSION['id_usu_sisacad_iesthuanta']; ?>-->
+              <center>
+              
+              </center>
             </div>
           </div>
         </div>
@@ -47,7 +53,7 @@ include "include/busquedas.php";
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Desarollado y administrado por - Miguel Ayala<a href="https://colorlib.com">Estudiante de computacion e informatica</a>
           </div>
           <div class="clearfix"></div>
         </footer>
