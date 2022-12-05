@@ -4,8 +4,8 @@ include "include/busquedas.php";
 include "include/verificar_sesion.php";
 
 $d_insti = $_GET['id'];
-$busc_datos = buscarDatosInstitucionalesByCodigo($conexion, $d_insti);
-$res_b_insti = mysqli_fetch_array($busc_datos);
+$buscar_datos_institucionales = buscarDatosInstitucionalesByCodigo($conexion, $d_insti);
+$res_buscar_institucional = mysqli_fetch_array($buscar_datos_institucionales);
 
 ?>
 <!DOCTYPE html>
@@ -65,20 +65,20 @@ $res_b_insti = mysqli_fetch_array($busc_datos);
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">RUC :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="number" name="ruc" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['ruc']; ?>">
+                                            <input type="number" name="ruc" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['ruc']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre de la institución :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="nombre_institucion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['nombre_institucion']; ?>">
+                                            <input type="text" name="nombre_institucion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['nombre_institucion']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Departamento :</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="departamento" id="departamento" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['departamento']; ?>">
+                                            <input type="text" name="departamento" id="departamento" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['departamento']; ?>">
                                         </div>
                                     </div>
 
@@ -86,42 +86,42 @@ $res_b_insti = mysqli_fetch_array($busc_datos);
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Provincia :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="provincia" class="date-picker form-control col-md-7 col-xs-12"  value="<?php echo $res_b_insti['provincia']; ?>">
+                                            <input type="text" name="provincia" class="date-picker form-control col-md-7 col-xs-12"  value="<?php echo $res_buscar_institucional['provincia']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Distrito :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="distrito"class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['distrito']; ?>">
+                                            <input type="text" name="distrito"class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['distrito']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Dirección :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="direccion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['direccion']; ?>">
+                                            <input type="text" name="direccion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['direccion']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Teléfono :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="number" name="telofono" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['telofono']; ?>">
+                                            <input type="number" name="telofono" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['telofono']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Correo :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" name="correo" id="correo"class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['correo']; ?>">
+                                            <input type="email" name="correo" id="correo"class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['correo']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Número de la resolución:
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="nro_resolucion" id="nro_resolucion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_insti['nro_resolucion']; ?>">
+                                            <input type="text" name="nro_resolucion" id="nro_resolucion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_institucional['nro_resolucion']; ?>">
                                         </div>
                                     </div>                            
                                     <div class="ln_solid"></div>

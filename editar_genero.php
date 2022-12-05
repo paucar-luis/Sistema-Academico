@@ -4,8 +4,8 @@ include "include/busquedas.php";
 include "include/verificar_sesion.php";
 
 $id_genero = $_GET['id'];
-$busc_genero = buscarGeneroById($conexion, $id_genero);
-$res_b_genero= mysqli_fetch_array($busc_genero);
+$buscar_genero = buscarGeneroById($conexion, $id_genero);
+$res_buscar_genero= mysqli_fetch_array($busc_buscar_generogenero);
 
 ?>
 <!DOCTYPE html>
@@ -54,18 +54,18 @@ $res_b_genero= mysqli_fetch_array($busc_genero);
                             <div class="x_content">
                                 <br />
                                 <form class="form-horizontal form-label-left" method="POST" action="./operaciones/actualizar_genero.php">
-                                    <input type="text" name="id" value="<?php echo $id_genero; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $id_genero; ?>">
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Género :
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="genero" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_genero['genero']; ?>">
+                                            <input type="text" name="genero" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_genero['genero']; ?>">
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                            <a href="./genero.php" class="btn btn-warning" type="button">Cancelar</a>
+                                            <a href="./genero.php" class="btn btn-primary" type="button">Retroceder</a>
                                             <button type="submit" class="btn btn-success">Actualizar Datos</button>
                                         </div>
                                     </div>

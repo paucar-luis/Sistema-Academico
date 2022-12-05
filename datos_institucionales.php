@@ -66,21 +66,21 @@ include ('include/verificar_sesion.php');
                       <tbody>
                         <?php 
                         $b_datos = buscarDatosInstitucionales($conexion);
-                        while ($res_b_datos = mysqli_fetch_array($b_datos)) {
+                        while ($res_buscar_datos = mysqli_fetch_array($b_datos)) {
                         ?>
                         <tr>
-                          <td><?php echo $res_b_datos['cod_modular']; ?></td>
-                          <td><?php echo $res_b_datos['ruc']; ?></td>
-                          <td><?php echo $res_b_datos['nombre_institucion'];  ?></td>
-                          <td><?php echo $res_b_datos['departamento']; ?></td>
-                          <td><?php echo $res_b_datos['provincia']; ?></td>
-                          <td><?php echo $res_b_datos['distrito']; ?></td>
-                          <td><?php echo $res_b_datos['direccion']; ?></td>
-                          <td><?php echo $res_b_datos['telofono']; ?></td>
-                          <td><?php echo $res_b_datos['correo']; ?></td>
-                          <td><?php echo $res_b_datos['nro_resolucion']; ?></td>
+                          <td><?php echo $res_buscar_datos['cod_modular']; ?></td>
+                          <td><?php echo $res_buscar_datos['ruc']; ?></td>
+                          <td><?php echo $res_buscar_datos['nombre_institucion'];  ?></td>
+                          <td><?php echo $res_buscar_datos['departamento']; ?></td>
+                          <td><?php echo $res_buscar_datos['provincia']; ?></td>
+                          <td><?php echo $res_buscar_datos['distrito']; ?></td>
+                          <td><?php echo $res_buscar_datos['direccion']; ?></td>
+                          <td><?php echo $res_buscar_datos['telofono']; ?></td>
+                          <td><?php echo $res_buscar_datos['correo']; ?></td>
+                          <td><?php echo $res_buscar_datos['nro_resolucion']; ?></td>
                           <td>
-                            <a href="editar_datos_institucionales.php?id=<?php echo $res_b_datos['cod_modular']; ?>" class="btn btn-success"> Editar</a>
+                            <a href="editar_datos_institucionales.php?id=<?php echo $res_buscar_datos['cod_modular']; ?>" class="btn btn-success"> Editar</a>
                           </td>
                         </tr>
                         <?php

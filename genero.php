@@ -46,7 +46,7 @@ include('include/verificar_sesion.php');
                             <div class="x_title ">
                                 <h2>Géneros</h2>
                                 <ul class="nav navbar-right">
-                                <a href="re_genero.php" class="btn btn-success"><i class="fa fa-plus-square"> </i> Agregar nuevo</a>
+                                <a href="registar_genero.php" class="btn btn-success"> Agregar nuevo</a>
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
@@ -55,22 +55,20 @@ include('include/verificar_sesion.php');
                                 <table id="example" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Identificador</th>
                                             <th>Cargo</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $b_genero = buscarGenero($conexion);
-                                        while ($res_b_genero= mysqli_fetch_array($b_genero)) {
+                                        $buscar_genero = buscarGenero($conexion);
+                                        while ($res_buscar_genero= mysqli_fetch_array($buscar_genero)) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $res_b_genero['id']; ?></td>
-                                                <td><?php echo $res_b_genero['genero']; ?></td>
+                                                <td><?php echo $res_buscar_genero['genero']; ?></td>
                                                 <td>
                                                     <span class="justify-center">
-                                                    <a href="editar_genero.php?id=<?php echo $res_b_genero['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
+                                                    <a href="editar_genero.php?id=<?php echo $res_buscar_genero['id']; ?>" class="btn btn-primary">Editar</a>
                                                 </td>
                                             </tr>
                                         <?php

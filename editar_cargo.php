@@ -4,8 +4,8 @@ include('./include/busquedas.php');
 include "include/verificar_sesion.php";
 
 $id_cargo = $_GET['id'];
-$busc_cargo = buscarCargoById($conexion, $id_cargo);
-$res_b_cargo = mysqli_fetch_array($busc_cargo);
+$buscar_cargo = buscarCargoById($conexion, $id_cargo);
+$resultado_buscar_cargo = mysqli_fetch_array($buscar_cargo);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,7 +89,7 @@ $res_b_cargo = mysqli_fetch_array($busc_cargo);
                                                                 <span class="required">:</span>
                                                             </label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" name="cargo" class="date-picker form-control col-md-7 col-xs-12" value="<?php echo $res_b_cargo['descripcion']; ?>">
+                                                            <input type="text" name="cargo" class="date-picker form-control col-md-7 col-xs-12" value="<?php echo $resultado_buscar_cargo['descripcion']; ?>">
                                                             </div>
                                                         </div>
                                                         <br><br>

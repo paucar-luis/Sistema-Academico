@@ -4,8 +4,8 @@ include "include/busquedas.php";
 include "include/verificar_sesion.php";
 
 $id_estudiante = $_GET['id'];
-$busc_estudiante = buscarEstudianteById($conexion, $id_estudiante);
-$res_b_estudiante = mysqli_fetch_array($busc_estudiante);
+$buscar_estudiante = buscarEstudianteById($conexion, $id_estudiante);
+$res_buscar_estudiante = mysqli_fetch_array($buscar_estudiante);
 
 ?>
 <!DOCTYPE html>
@@ -57,32 +57,32 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">DNI :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="dni" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['dni']; ?>">
+                          <input type="number" name="dni" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['dni']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Apellidos y Nombres :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="nom_ap" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['apellidos_nombres']; ?>">
+                          <input type="text" name="nom_ap" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['apellidos_nombres']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Genero :</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select name="id_genero" id="id_genero" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['id_genero']; ?>">
+                        <select name="id_genero" id="id_genero" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['id_genero']; ?>">
                           <option value="">Seleccione</option>
                           <?php
-                          $id_genero_estudiante = $res_b_estudiante['id_genero'];
+                          $id_genero_estudiante = $res_buscar_estudiante['id_genero'];
                           $buscar_genero = buscarGenero($conexion);
-                          while ($res_b_genero = mysqli_fetch_array($buscar_genero)) {
-                            $id_genero = $res_b_genero['id'];
+                          while ($res_buscar_genero = mysqli_fetch_array($buscar_genero)) {
+                            $id_genero = $res_buscar_genero['id'];
                           ?>
-                          <option value="<?php echo $res_b_genero['id']; ?>" 
+                          <option value="<?php echo $res_buscar_genero['id']; ?>" 
                           <?php if ($id_genero_estudiante == $id_genero) {
                             echo "selected";
                           } ?>
-                          ><?php echo $res_b_genero['genero']; ?></option>
+                          ><?php echo $res_buscar_genero['genero']; ?></option>
                           <?php
                           };
                           ?>
@@ -94,35 +94,35 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" name="fecha_nac" class="date-picker form-control col-md-7 col-xs-12" required="required"  value="<?php echo $res_b_estudiante['fecha_nac']; ?>">
+                          <input type="date" name="fecha_nac" class="date-picker form-control col-md-7 col-xs-12" required="required"  value="<?php echo $res_buscar_estudiante['fecha_nac']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Dirección :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="direccion" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['direccion']; ?>">
+                          <input type="text" name="direccion" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['direccion']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Correo :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="email" name="email" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['correo']; ?>">
+                          <input type="email" name="email" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['correo']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">NRO Celular :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" name="cel" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['telefono']; ?>">
+                          <input type="number" name="cel" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['telefono']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Año de Ingreso :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" name="anio_ingreso" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['anio_ingreso']; ?>">
+                          <input type="date" name="anio_ingreso" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['anio_ingreso']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
@@ -133,13 +133,13 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                           <option value="">Seleccione</option>
                           <?php
                           $buscar_pe = buscarProgramaEstudio($conexion);
-                          while ($res_b_pe = mysqli_fetch_array($buscar_pe)) {
+                          while ($res_buscar_pprograma_estudios = mysqli_fetch_array($buscar_pe)) {
                           ?>
-                          <option value="<?php echo $res_b_pe['id']; ?>"
-                          <?php if ($res_b_estudiante['id_programa_estudios'] == $res_b_pe['id']) {
+                          <option value="<?php echo $res_buscar_pprograma_estudios['id']; ?>"
+                          <?php if ($res_buscar_estudiante['id_programa_estudios'] == $res_buscar_pprograma_estudios['id']) {
                             echo "selected";
                           } ?>
-                          ><?php echo $res_b_pe['nombre']; ?></option>
+                          ><?php echo $res_buscar_pprograma_estudios['nombre']; ?></option>
                           <?php
                           };
                           ?>
@@ -154,13 +154,13 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                           <option value="">Seleccione</option>
                           <?php
                           $buscar_sem = buscarSemestre($conexion);
-                          while ($res_b_sem = mysqli_fetch_array($buscar_sem)) {
+                          while ($res_buscar_semestre = mysqli_fetch_array($buscar_sem)) {
                           ?>
-                          <option value="<?php echo $res_b_sem['id']; ?>"
-                          <?php if ($res_b_estudiante['id_semestre'] == $res_b_sem['id']) {
+                          <option value="<?php echo $res_buscar_semestre['id']; ?>"
+                          <?php if ($res_buscar_estudiante['id_semestre'] == $res_buscar_semestre['id']) {
                             echo "selected";
                           } ?>
-                          ><?php echo $res_b_sem['descripcion']; ?></option>
+                          ><?php echo $res_buscar_semestre['descripcion']; ?></option>
                           <?php
                           };
                           ?>
@@ -171,14 +171,14 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Seccion :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="seccion" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['seccion']; ?>">
+                          <input type="text" name="seccion" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['seccion']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Turno :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="turno" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_estudiante['turno']; ?>">
+                          <input type="text" name="turno" maxlength="9" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_estudiante['turno']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
@@ -189,13 +189,13 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                           <option value="">Seleccione</option>
                           <?php
                           $buscar_condicion = buscarCondicion($conexion);
-                          while ($res_b_condicion = mysqli_fetch_array($buscar_condicion)) {
+                          while ($res_buscar_condicion = mysqli_fetch_array($buscar_condicion)) {
                           ?>
-                          <option value="<?php echo $res_b_condicion['id']; ?>"
-                          <?php if ($res_b_estudiante['id_condicion'] == $res_b_condicion['id']) {
+                          <option value="<?php echo $res_buscar_condicion['id']; ?>"
+                          <?php if ($res_buscar_estudiante['id_condicion'] == $res_buscar_condicion['id']) {
                             echo "selected";
                           } ?>
-                          ><?php echo $res_b_condicion['descripcion']; ?></option>
+                          ><?php echo $res_buscar_condicion['descripcion']; ?></option>
                           <?php
                           };
                           ?>
@@ -208,8 +208,8 @@ $res_b_estudiante = mysqli_fetch_array($busc_estudiante);
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select name="discapacidad" id="discapacidad" class="form-control col-md-7 col-xs-12">
                             <option value="">Seleccione</option>
-                            <option value="SI" <?php if($res_b_estudiante['discapacidad'] == "SI"){ echo "selected";}; ?>>SI</option>
-                            <option value="NO" <?php if($res_b_estudiante['discapacidad'] == "NO"){ echo "selected";}; ?>>NO</option>
+                            <option value="SI" <?php if($res_buscar_estudiante['discapacidad'] == "SI"){ echo "selected";}; ?>>SI</option>
+                            <option value="NO" <?php if($res_buscar_estudiante['discapacidad'] == "NO"){ echo "selected";}; ?>>NO</option>
                           </select>
                         </div>
                       </div>

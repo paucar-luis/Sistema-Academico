@@ -65,14 +65,14 @@ include('include/verificar_sesion.php');
                                     <tbody>
                                         <?php
                                         $b_cargo = buscarCargo($conexion);
-                                        while ($res_b_cargo = mysqli_fetch_array($b_cargo)) {
+                                        while ($res_buscar_cargo = mysqli_fetch_array($b_cargo)) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $res_b_cargo['id']; ?></td>
-                                                <td><?php echo $res_b_cargo['descripcion']; ?></td>
+                                                <td><?php echo $res_buscar_cargo['id']; ?></td>
+                                                <td><?php echo $res_buscar_cargo['descripcion']; ?></td>
                                                 <td>
                                                     <span class="justify-center">
-                                                    <a href="editar_cargo.php?id=<?php echo $res_b_cargo['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
+                                                    <a href="editar_cargo.php?id=<?php echo $res_buscar_cargo['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
                                                 </td>
                                             </tr>
                                         <?php
