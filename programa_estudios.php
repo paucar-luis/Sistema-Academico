@@ -45,6 +45,7 @@ include "include/verificar_sesion.php";
                             <div class="x_title">
                                 <h2>Programa estudios</h2>
                                 <ul class="nav navbar-right">
+                                    todo listo
                                     <li>
                                         <a href="programas.php" class="btn btn-success"> Agregar nuevo</a>
                                     </li>
@@ -66,19 +67,19 @@ include "include/verificar_sesion.php";
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $b_prog = buscarProgramaEstudio($conexion);
-                                        while ($res_b_pro = mysqli_fetch_array($b_prog)) {
+                                        $buscar_programa = buscarProgramaEstudio($conexion);
+                                        while ($res_buscar_programa = mysqli_fetch_array($buscar_programa)) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $res_b_pro['id']; ?></td>
-                                                <td><?php echo $res_b_pro['codigo']; ?></td>
-                                                <td><?php echo $res_b_pro['tipo'];  ?></td>
-                                                <td><?php echo $res_b_pro['nombre']; ?></td>
-                                                <td><?php echo $res_b_pro['resolucion']; ?></td>
+                                                <td><?php echo $res_buscar_programa['id']; ?></td>
+                                                <td><?php echo $res_buscar_programa['codigo']; ?></td>
+                                                <td><?php echo $res_buscar_programa['tipo'];  ?></td>
+                                                <td><?php echo $res_buscar_programa['nombre']; ?></td>
+                                                <td><?php echo $res_buscar_programa['resolucion']; ?></td>
                                                 <td>
                                                     <span class="justify-center">
-                                                    <a href="editar_programa.php?id=<?php echo $res_b_pro['id']; ?>" class="btn btn-primary">Editar</a>
-                                                    <a href="operaciones/eliminar_programa_estudios.php?id=<?php echo $res_b_pro['id']; ?>" class="btn btn-danger"> Eliminar</a>
+                                                    <a href="editar_programa.php?id=<?php echo $res_buscar_programa['id']; ?>" class="btn btn-primary">Editar</a>
+                                                    <a href="operaciones/eliminar_programa_estudios.php?id=<?php echo $res_buscar_programa['id']; ?>" class="btn btn-danger"> Eliminar</a>
                                                     </span>
                                                 </td>
                                             </tr>

@@ -4,8 +4,8 @@ include "include/busquedas.php";
 include "include/verificar_sesion.php";
 
 $id_programa = $_GET['id'];
-$busc_programa = buscarProgramaById($conexion, $id_programa);
-$res_b_programa = mysqli_fetch_array($busc_programa);
+$buscar_programa = buscarProgramaById($conexion, $id_programa);
+$res_buscar_programa = mysqli_fetch_array($buscar_programa);
 
 ?>
 <!DOCTYPE html>
@@ -57,28 +57,28 @@ $res_b_programa = mysqli_fetch_array($busc_programa);
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Codigo :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="codigo" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_programa['codigo']; ?>">
+                          <input type="text" name="codigo" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_programa['codigo']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tipo :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="tipo" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_programa['tipo']; ?>">
+                          <input type="text" name="tipo" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_programa['tipo']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_programa['nombre']; ?>">
+                          <input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_programa['nombre']; ?>">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Resolucion :
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="resolucion" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_programa['resolucion']; ?>">
+                          <input type="text" name="resolucion" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_programa['resolucion']; ?>">
                         </div>
                       </div>
                       
