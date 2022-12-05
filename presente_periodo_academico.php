@@ -62,19 +62,20 @@ include('include/verificar_sesion.php');
 									</thead>
 									<tbody>
 										<?php
-										$b_p_periodo = buscarPre_p_Acad($conexion);
-										while ($res_b_p_acad = mysqli_fetch_array($b_p_periodo)) {
+										$buscar_presente_periodo = BuscarPresentePeriodoAcademico($conexion);
+										while ($res_buscar_presente_acadademico = mysqli_fetch_array($buscar_presente_periodo)) {
 										?>
 											<tr>
-												<td><?php echo $res_b_p_acad['id']; ?></td>
+												<td><?php echo $res_buscar_presente_acadademico['id']; ?></td>
 												<?php
-												$b_periodo = buscarPeriodoAcademicoById($conexion, $res_b_p_acad['id_periodo_acad']);
+												$b_periodo = buscarPeriodoAcademicoById($conexion, $res_buscar_presente_acadademico['id_periodo_acad']);
 												$res_b_p_aca_id = mysqli_fetch_array($b_periodo);
 												?>
 												<td ><?php echo $res_b_p_aca_id['nombre']; ?></td>
 												<td class="d-flex justify-center align-items-center" >
 													<span class="justify-center">
-														<a href="edit_pre_p_acad.php?id=<?php echo $res_b_p_acad['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
+														<a href="editar_presente_periodo_acad.php?id=<?php echo $res_buscar_presente_acadademico['id']; ?>" class="btn btn-primary"> Editar</a>
+														<a href="eliminar_presente_periodo_acad.php?id=<?php echo $res_buscar_presente_acadademico['id']; ?>" class="btn btn-danger"> Editar</a>
 												</td>
 											</tr>
 										<?php

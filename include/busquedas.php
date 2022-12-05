@@ -94,4 +94,8 @@ function buscarPeriodoAcademicoById( $conexion, $id){
     $sql = "SELECT * FROM periodo_academico WHERE id='$id'";
     return mysqli_query($conexion, $sql);
 }
+function BuscarPresentePeriodoAcademico($conexion){
+    $sql = "SELECT * FROM presente_periodo_acad";
+    return mysqli_query($conexion, $sql);
+}
 ?>
