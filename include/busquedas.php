@@ -74,4 +74,12 @@ function buscarModuloById ($conexion, $id){
     $sql = "SELECT * FROM modulo_profesional WHERE id='$id'";
     return mysqli_query($conexion, $sql);
 }
+function buscarDatosInstitucionales($conexion){
+    $sql = "SELECT*FROM datos_institucionales";
+    return mysqli_query($conexion, $sql);
+}
+function buscarDatosInstitucionalesByCodigo($conexion, $codigo){
+    $sql = "SELECT*FROM datos_institucionales WHERE cod_modular = '$codigo'";
+    return mysqli_query($conexion, $sql);
+}
 ?>
