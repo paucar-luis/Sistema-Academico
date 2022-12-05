@@ -3,6 +3,7 @@ include('./include/conexion.php');
 include('./include/busquedas.php');
 include('include/verificar_sesion.php');
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@ include('include/verificar_sesion.php');
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Unidades didácticas | </title>
+	<title>Presente periodo académico | </title>
 	<!-- Bootstrap -->
 	<link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
@@ -44,11 +45,8 @@ include('include/verificar_sesion.php');
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2>Unidades didácticas</h2>
+								<h2>Presente periodo académico</h2>
 								<ul class="nav navbar-right">
-									<li>
-										<a href="./registrar_unidad_didactica.php" class="btn btn-success"> Agregar nuevo</a>
-									</li>
 								</ul>
 								<div class="clearfix"></div>
 							</div>
@@ -58,47 +56,25 @@ include('include/verificar_sesion.php');
 									<thead>
 										<tr>
 											<th>Identificador</th>
-											<th>Unidad Didactica</th>
-											<th>Programas de estudios</th>
-											<th>Módulo</th>
-											<th>Semestre</th>
-											<th>Créditos</th>
-											<th>Hora</th>
-											<th>Tipo</th>
-											<th>Orden</th>
+											<th>Perido Académico</th>
 											<th>Acciones</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
-										$b_ud = buscarUnidadDidactica($conexion);
-										while ($res_b_ud = mysqli_fetch_array($b_ud)) {
+										$b_p_periodo = buscarPre_p_Acad($conexion);
+										while ($res_b_p_acad = mysqli_fetch_array($b_p_periodo)) {
 										?>
 											<tr>
-												<td><?php echo $res_b_ud['id']; ?></td>
-												<td><?php echo $res_b_ud['descripcion']; ?></td>
+												<td><?php echo $res_b_p_acad['id']; ?></td>
 												<?php
-												$b_programa = buscarProgramaById($conexion, $res_b_ud['id_programa_estudio']);
-												$res_b_p_id = mysqli_fetch_array($b_programa);
-
-												$b_modulo = buscarModuloById($conexion, $res_b_ud['id_modulo']);
-												$res_b_m_id = mysqli_fetch_array($b_modulo);
-											
-												$b_semestre = buscarSemestreById($conexion, $res_b_ud['id_semestre']);
-												$res_b_s_id = mysqli_fetch_array($b_semestre);
-
+												$b_periodo = buscarPeriodoAcademicoById($conexion, $res_b_p_acad['id_periodo_acad']);
+												$res_b_p_aca_id = mysqli_fetch_array($b_periodo);
 												?>
-												<td><?php echo $res_b_p_id['nombre'];  ?></td>
-												<td><?php echo $res_b_m_id['descripcion']; ?></td>
-												<td><?php echo $res_b_s_id['descripcion']; ?></td>
-												<td><?php echo $res_b_ud['creditos']; ?></td>
-												<td><?php echo $res_b_ud['horas']; ?></td>
-												<td><?php echo $res_b_ud['tipo']; ?></td>
-												<td><?php echo $res_b_ud['orden']; ?></td>
-												<td>
+												<td ><?php echo $res_b_p_aca_id['nombre']; ?></td>
+												<td class="d-flex justify-center align-items-center" >
 													<span class="justify-center">
-														<a href="editar_unidad_didactica.php?id=<?php echo $res_b_ud['id']; ?>" class="btn btn-primary"> Editar</a>
-														<a href="eliminar_unidad_didactica.php?id=<?php echo $res_b_ud['id']; ?>" class="btn btn-danger">Eliminar</a>
+														<a href="edit_pre_p_acad.php?id=<?php echo $res_b_p_acad['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
 												</td>
 											</tr>
 										<?php
