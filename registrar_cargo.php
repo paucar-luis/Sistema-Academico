@@ -1,11 +1,7 @@
 <?php
-include('./include/conexion.php');
-include('./include/busquedas.php');
+include "./include/conexion.php";
+include "./include/busquedas.php";
 include "include/verificar_sesion.php";
-
-$id_cargo = $_GET['id'];
-$buscar_cargo = buscarCargoById($conexion, $id_cargo);
-$resultado_buscar_cargo = mysqli_fetch_array($buscar_cargo);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,19 +73,19 @@ $resultado_buscar_cargo = mysqli_fetch_array($buscar_cargo);
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="x_panel">
                                                 <div class="x_title">
-                                                    <h2>Actualizar cargo<small></small></h2>
+                                                    <h2>Registrar Cargo<small></small></h2>
                                                     <div class="clearfix"></div>
                                                 </div>
                                                 <div class="x_content">
-                                                    <form class="form-horizontal form-label-left" action="./operaciones/actualizar_cargo.php" method="POST" id="formulario_docente">
-                                                    <input type="hidden" name="id" value="<?php echo $id_cargo;?>">
+                                                    <form class="form-horizontal form-label-left" action="./operaciones/registrar_cargo.php" method="POST" id="formulario_docente">
+
 
                                                         <div class="item form-group">
                                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Cargo
                                                                 <span class="required">:</span>
                                                             </label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" name="cargo" class="date-picker form-control col-md-7 col-xs-12" value="<?php echo $resultado_buscar_cargo['descripcion']; ?>">
+                                                                <input id="cargo" class="form-control col-md-7 col-xs-12" name="cargo" placeholder="Ingrese el cargo">
                                                             </div>
                                                         </div>
                                                         <br><br>
@@ -97,6 +93,7 @@ $resultado_buscar_cargo = mysqli_fetch_array($buscar_cargo);
                                                         <div class="form-group">
                                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                                                 <a href="./cargo.php" class="btn btn-primary" type="button">Retroceder</a>
+                                                                <button class="btn btn-primary" type="reset">Limpiar</button>
                                                                 <button type="submit" class="btn btn-success">Guardar</button>
                                                             </div>
                                                         </div>

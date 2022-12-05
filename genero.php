@@ -46,7 +46,7 @@ include('include/verificar_sesion.php');
                             <div class="x_title ">
                                 <h2>Géneros</h2>
                                 <ul class="nav navbar-right">
-                                <a href="registar_genero.php" class="btn btn-success"> Agregar nuevo</a>
+                                <a href="registrar_genero.php" class="btn btn-success"> Agregar nuevo</a>
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>

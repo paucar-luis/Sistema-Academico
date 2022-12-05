@@ -47,7 +47,7 @@ include('include/verificar_sesion.php');
                                 <h2>Cargos</h2>
                                 <ul class="nav navbar-right">
                                     <li>
-                                        <a href="re_cargo.php" class="btn btn-success"><i class="fa fa-plus-square"> </i> Agregar nuevo</a>
+                                        <a href="registrar_cargo.php" class="btn btn-success"> Agregar nuevo</a>
                                     </li>
                                 </ul>
                                 <div class="clearfix"></div>
@@ -57,7 +57,6 @@ include('include/verificar_sesion.php');
                                 <table id="example" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Identificador</th>
                                             <th>Cargo</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -68,11 +67,10 @@ include('include/verificar_sesion.php');
                                         while ($res_buscar_cargo = mysqli_fetch_array($b_cargo)) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $res_buscar_cargo['id']; ?></td>
                                                 <td><?php echo $res_buscar_cargo['descripcion']; ?></td>
                                                 <td>
                                                     <span class="justify-center">
-                                                    <a href="editar_cargo.php?id=<?php echo $res_buscar_cargo['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
+                                                    <a href="editar_cargo.php?id=<?php echo $res_buscar_cargo['id']; ?>" class="btn btn-primary"> Editar</a>
                                                 </td>
                                             </tr>
                                         <?php

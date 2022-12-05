@@ -5,7 +5,7 @@ include "include/verificar_sesion.php";
 
 $id_genero = $_GET['id'];
 $buscar_genero = buscarGeneroById($conexion, $id_genero);
-$res_buscar_genero= mysqli_fetch_array($busc_buscar_generogenero);
+$res_buscar_genero= mysqli_fetch_array($buscar_genero);
 
 ?>
 <!DOCTYPE html>

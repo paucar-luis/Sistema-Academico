@@ -82,4 +82,16 @@ function buscarDatosInstitucionalesByCodigo($conexion, $codigo){
     $sql = "SELECT*FROM datos_institucionales WHERE cod_modular = '$codigo'";
     return mysqli_query($conexion, $sql);
 }
+function buscarPeriodoAcademico( $conexion){
+    $sql = "SELECT*FROM periodo_academico";
+    return mysqli_query($conexion, $sql);
+}
+function buscarDocente($conexion){
+    $sql = "SELECT * FROM docente";
+    return mysqli_query($conexion, $sql);
+}
+function buscarPeriodoAcademicoById( $conexion, $id){
+    $sql = "SELECT * FROM periodo_academico WHERE id='$id'";
+    return mysqli_query($conexion, $sql);
+}
 ?>
