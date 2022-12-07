@@ -54,7 +54,7 @@ $id_prog_Estudios = $res_b_modulo['id_programa_estudio'];
 							<div class="x_content">
 								<br />
 								<form class="form-horizontal form-label-left" method="POST" action="operaciones/actualizar_modulo.php">
-									<input type="text" name="id" value="<?php echo $id_modulo; ?>">
+									<input type="hidden" name="id" value="<?php echo $id_modulo; ?>">
 
 									<div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Programa de estudios:</label>
@@ -98,7 +98,7 @@ $id_prog_Estudios = $res_b_modulo['id_programa_estudio'];
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-											<a class="btn btn-primary" href="./modulo_formativo.php" type="button">Retroceder</a>
+											<a class="btn btn-primary" href="./modulo.php" type="button">Retroceder</a>
 											<button type="submit" class="btn btn-success">Guardar</button>
 										</div>
 									</div>

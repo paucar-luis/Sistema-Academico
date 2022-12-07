@@ -12,7 +12,7 @@ include "include/verificar_sesion.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Programa de estudios | </title>
+    <title>Gentelella Alela! | </title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -45,9 +45,8 @@ include "include/verificar_sesion.php";
                             <div class="x_title">
                                 <h2>Programa estudios</h2>
                                 <ul class="nav navbar-right">
-                                    todo listo
                                     <li>
-                                        <a href="programas.php" class="btn btn-success"> Agregar nuevo</a>
+                                        <a href="registrar_programa_estudios.php" class="btn btn-success"> Agregar nuevo</a>
                                     </li>
                                 </ul>
                                 <div class="clearfix"></div>

@@ -8,7 +8,7 @@ $ejecutar = mysqli_query($conexion, $sql);
 if ($ejecutar) {
     echo "<script>
 					alert('Registro Eliminado');
-					window.location= '../ModulosFormativos.php';
+					window.location= '../modulo.php';
 				</script>
 			";
 }else{

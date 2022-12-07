@@ -15,7 +15,7 @@ include "include/verificar_sesion.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Módulos formativos | </title>
+    <title>Gentelella Alela! |</title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -82,8 +82,8 @@ include "include/verificar_sesion.php";
                                                 <td><?php echo $res_b_mod['descripcion']; ?></td>
                                                 <td>
                                                     <span class="justify-center">
-                                                    <a href="editar_modulo.php?id=<?php echo $res_b_mod['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar  </a>
-                                                    <a href="operaciones/eliminar_modulo.php?id=<?php echo $res_b_mod['id']; ?>" class="btn btn-primary">Eliminar  </a>
+                                                    <a href="editar_modulo.php?id=<?php echo $res_b_mod['id']; ?>" class="btn btn-primary">Editar  </a>
+                                                    <a href="operaciones/eliminar_modulo.php?id=<?php echo $res_b_mod['id']; ?>" class="btn btn-danger">Eliminar  </a>
                                                 </td>
                                             </tr>
                                         <?php
