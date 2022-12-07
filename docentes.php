@@ -45,7 +45,7 @@ include "include/verificar_sesion.php";
                     <h2>Relacion de Docentes</h2>
                     <ul class="nav navbar-right">
                       <li>
-                        <a href="registro_docente.php" class="btn btn-success"><i class="fa fa-plus-square"> </i> Agregar nuevo</a>
+                        <a href="registrar_docente.php" class="btn btn-success">Agregar nuevo</a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -95,7 +95,7 @@ include "include/verificar_sesion.php";
                           ?>
                           <td><?php echo $res_b_id_genero['descripcion']; ?></td>
                           <td>
-                            <a href="editar_docente.php?id=<?php echo $res_b_docente['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar</a>
+                            <a href="editar_docente.php?id=<?php echo $res_b_docente['id']; ?>" class="btn btn-primary"> Editar</a>
                             <a href="operaciones/eliminar_docente.php?id=<?php echo $res_b_docente['id']; ?>" class="btn btn-danger">Eliminar</a>
                           </td>
                         </tr>

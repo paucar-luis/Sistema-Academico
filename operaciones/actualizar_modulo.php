@@ -14,7 +14,7 @@ include "../include/conexion.php";
     if ($ejec_consulta) {
         echo "<script>
 					alert('Datos actualizados de manera Correcta');
-					window.location= '../modulo_formativo.php';
+					window.location= '../modulo.php';
 				</script>
 			";
     } else {

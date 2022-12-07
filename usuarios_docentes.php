@@ -1,8 +1,7 @@
 <?php
-include "include/conexion.php";
-include "include/busquedas.php";
+include "./include/conexion.php";
+include "./include/busquedas.php";
 include "include/verificar_sesion.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@ include "include/verificar_sesion.php";
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Gentelella Alela! | </title>
+	<title>Usuarios docentes | </title>
 	<!-- Bootstrap -->
 	<link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Font Awesome -->
@@ -37,6 +36,7 @@ include "include/verificar_sesion.php";
 	<div class="container body">
 		<div class="main_container">
 			<?php include "include/menu.php" ?>
+
 			<!-- Menu en la parte superior -->
 			<!-- page content -->
 			<div class="right_col" role="main">
@@ -44,10 +44,10 @@ include "include/verificar_sesion.php";
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2>Periodos académicos</h2>
+								<h2>Usuario de los docentes</h2>
 								<ul class="nav navbar-right">
 									<li>
-										<a href="./registrar_periodo_academico.php" class="btn btn-success">  Agregar Nuevo</a>
+										<a href="registrar_docente.php" class="btn btn-success">Agregar nuevo</a>
 									</li>
 								</ul>
 								<div class="clearfix"></div>
@@ -57,41 +57,39 @@ include "include/verificar_sesion.php";
 								<table id="example" class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th>Identificador</th>
-											<th>Periodo Académico</th>
-											<th>Fecha Inicio</th>
-											<th>Fecha Fin</th>
-											<th>Director</th>
-											<th>Fecha Actas</th>
+											<th>Id</th>
+											<th>Usuario</th>
+											<th>Nombres y apellidos</th>
 											<th>Acciones</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
-										$buscar_periodo_academico = buscarPeriodoAcademico($conexion);
-										while ($res_buscar_periodo_acad = mysqli_fetch_array($buscar_periodo_academico)) {
+										$b_u_docentes = buscarUsuarioDocente($conexion);
+										while ($res_b_u_docente = mysqli_fetch_array($b_u_docentes)) {
 										?>
 											<tr>
-												<td><?php echo $res_buscar_periodo_acad['id']; ?></td>
-												<td><?php echo $res_buscar_periodo_acad['nombre']; ?></td>
-												<td><?php echo $res_buscar_periodo_acad['fecha_inicio']; ?></td>
-												<td><?php echo $res_buscar_periodo_acad['fecha_fin']; ?></td>
-												<?php
-												$buscar_docente = buscarDocenteById($conexion, $res_buscar_periodo_acad['id_director']);
-												$res_b_id_docente = mysqli_fetch_array($buscar_docente);
+												<td><?php echo $res_b_u_docente['id']; ?></td>
+												<td><?php echo $res_b_u_docente['usuario']; ?></td>
+												<?php 
+													$b_docente = buscarDocenteById($conexion, $res_b_u_docente['id_docente']);
+													$res_b_id_docente = mysqli_fetch_array($b_docente);
 												?>
-												<td><?php echo $res_b_id_docente['apellidos_nombres']; ?></td>
-												<td><?php echo $res_buscar_periodo_acad['fecha_actas']; ?></td>
-												<td class=" d-flex justify-content-center align-items-center">
-													<span class="justify-center">
-														<a href="editar_periodo_academico.php?id=<?php echo $res_buscar_periodo_acad['id']; ?>" class="btn btn-primary"> Editar</a>
-														<a href="operaciones/eliminar_periodo_academico.php?id=<?php echo $res_buscar_periodo_acad['id']; ?>" class="btn btn-danger">Eliminar</a>
-													</span>
+													<td>
+													<?php echo $res_b_id_docente['apellidos_nombres'];  ?>
+													</td>
+												<?php
+												
+												?>
+												<td>
+													<a href="editar_usuario_docente.php?id=<?php echo $res_b_u_docente	['id']; ?>" class="btn btn-primary"> Editar</a>
+													<a href="operaciones/eliminar_docente.php?id=<?php echo $res_b_u_docente['id']; ?>" class="btn btn-danger">Eliminar</a>
 												</td>
 											</tr>
 										<?php
-										}
+										};
 										?>
+
 									</tbody>
 								</table>
 							</div>

@@ -2,6 +2,12 @@
 include "include/conexion.php";
 include "include/busquedas.php";
 include "include/verificar_sesion.php";
+
+$id_docente = $_GET['id'];
+$busc_docente = buscarUsuarioDocenteById($conexion, $id_docente);
+$res_b_user = mysqli_fetch_array($busc_docente);
+$id_user_docente = $res_b_user['id_docente'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,48 +48,44 @@ include "include/verificar_sesion.php";
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2>Registro programas de estudios</h2>
+								<h2>Editar usuario del docente</h2>
 
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
 								<br />
-								<form class="form-horizontal form-label-left" method="POST" action="operaciones/registrar_programa.php">
-
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Codigo :
+								<form class="form-horizontal form-label-left" method="POST" action="operaciones/actualizar_usuario_docente.php">
+									<input type="hidden" name="id" value="<?php echo $id_docente; ?>">
+									<!--<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombres del docente :
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="codigo" required="required" class="form-control col-md-7 col-xs-12">
+											<?php 
+											$b_docente = buscarDocenteById($conexion, $id_user_docente);
+											$res_b_docente = mysqli_fetch_array($b_docente);
+											?>
+											<input type="text" name="apellidos_nombres" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['apellidos_nombres']; ?>">
+										</div>
+									</div>-->
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Usuario :
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" name="usuario" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_user['usuario']; ?>">
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tipo :
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Contraseña :
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="tipo" required="required" class="form-control col-md-7 col-xs-12">
+											<input type="text" name="password" class="form-control col-md-7 col-xs-12">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nombre :
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="nombre" required="required" class="form-control col-md-7 col-xs-12">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Resolucion :
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="resolucion" required="required" class="form-control col-md-7 col-xs-12">
-										</div>
-									</div>
 									</div>
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-										<a class="btn btn-primary" href="./programa_estudios.php" type="button">Cancelar</a>
-											<button type="submit" class="btn btn-success">Guardar</button>
+											<a href="./usuarios_docentes.php" class="btn btn-primary" type="button">Retroceder</a>
+											<button type="submit" class="btn btn-success">Actualizar Datos</button>
 										</div>
 									</div>
 

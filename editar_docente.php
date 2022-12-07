@@ -3,12 +3,9 @@ include "include/conexion.php";
 include "include/busquedas.php";
 include "include/verificar_sesion.php";
 
-$id_unidad_didactica = $_GET['id'];
-$buscar_unidad_didactica = buscarUnidadDidacticaById($conexion, $id_unidad_didactica);
-$res_buscar_unidad_didactica = mysqli_fetch_array($buscar_unidad_didactica);
-$id_porgrama_estudios= $res_buscar_unidad_didactica['id_programa_estudio'];
-$id_modulo= $res_buscar_unidad_didactica['id_modulo'];
-$id_semestre= $res_buscar_unidad_didactica['id_semestre'];
+$id_docente = $_GET['id'];
+$busc_docente = buscarDocenteById($conexion, $id_docente);
+$res_b_docente = mysqli_fetch_array($busc_docente);
 
 ?>
 <!DOCTYPE html>
@@ -50,114 +47,119 @@ $id_semestre= $res_buscar_unidad_didactica['id_semestre'];
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<h2>Editar unidad didáctica</h2>
+								<h2>Editar datos del docente</h2>
 
 								<div class="clearfix"></div>
 							</div>
 							<div class="x_content">
 								<br />
-								<form class="form-horizontal form-label-left" method="POST" action="operaciones/editar_unidad_didactica.php">
-									<input type="hidden" name="id" value="<?php echo $id_unidad_didactica; ?>">
+								<form class="form-horizontal form-label-left" method="POST" action="operaciones/actualizar_docente.php">
+									<input type="hidden" name="id" value="<?php echo $id_docente; ?>">
 									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Unidad didáctica :
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">DNI :
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="u_didactica"  class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_unidad_didactica['descripcion'] ?>">
+											<input type="number" name="dni" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['dni']; ?>">
 										</div>
 									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Programa de estudios<span class="required">:</span>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Apellidos y Nombres :
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<select type="text" id="p_estudios" name="p_estudios" class="form-control col-md-7 col-xs-12" value='<?php echo $id_porgrama_estudios; ?>'>
-												<option>Seleccionar programa de estudios</option>
+											<input type="text" name="apellidos_nombres" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['apellidos_nombres']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Nacimiento :
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="date" name="fecha_nac" class="date-picker form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['fecha_nac']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Dirección :
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="text" name="direccion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['direccion']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Correo :
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="email" name="correo" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['correo']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Teléfono:
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input type="number" name="telefono" maxlength="9" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['telefono']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Genero :</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select name="id_genero" id="id_genero" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['id_genero']; ?>">
+												<option value="">Seleccione</option>
 												<?php
-												$buscar_programa = buscarProgramaEstudio($conexion);
-												while ($res_b_programa= mysqli_fetch_array($buscar_programa)) {
-													$id_b_pro = $res_b_programa['id'];
+												$id_genero_docente = $res_b_docente['id_genero'];
+												$buscar_genero_d = buscarGenero($conexion);
+												while ($res_b_genero_d = mysqli_fetch_array($buscar_genero_d)) {
+													$id_genero_d = $res_b_genero_d['id'];
 												?>
-													<option value="<?php echo $id_b_pro; ?>" <?php if ($id_porgrama_estudios === $id_b_pro) {
-														echo "selected";
-													} ?>><?php echo $res_b_programa['nombre']; ?></option>
+													<option value="<?php echo $res_b_genero_d['id']; ?>" <?php if ($id_genero_docente == $id_genero_d) {
+																																									echo "selected";
+																																								}
+																																								?>>
+														<?php echo $res_b_genero_d['genero']; ?></option>
 												<?php
 												};
 												?>
 											</select>
 										</div>
 									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Módulo<span class="required">:</span>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nivel de educación :
 										</label>
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<select type="text" id="modulo" name="modulo" class="form-control col-md-7 col-xs-12" value='<?php echo $id_modulo; ?>'>
-												<option>Seleccionar director</option>
+											<input name="nivel_educacion" id="nivel_educacion" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['nivel_educacion']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Condición Laboral:
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<input name="cond_laboral" id="cond_laboral" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['cond_laboral']; ?>">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cargo :
+										</label>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<select name="id_cargo" id="id_cargo" class="form-control col-md-7 col-xs-12" value="<?php echo $res_b_docente['id_cargo']; ?>">
+												<option value="">Seleccione</option>
 												<?php
-												$buscar_modulo = buscarModulo($conexion);
-												while ($res_b_modulo= mysqli_fetch_array($buscar_modulo)) {
-													$id_b_modulo = $res_b_modulo['id'];
+												$id_cargo_d = $res_b_docente['id_cargo'];
+												$buscar_cargo = buscarCargo($conexion);
+												while ($res_b_cargo = mysqli_fetch_array($buscar_cargo)) {
+													$id_cargo = $res_b_cargo['id'];
 												?>
-													<option value="<?php echo $id_b_modulo; ?>" <?php if ($id_modulo === $id_b_modulo) {
+													<option value="<?php echo $res_b_cargo['id']; ?>" <?php if ($id_cargo_d == $id_cargo) {
 														echo "selected";
-													} ?>><?php echo $res_b_modulo['descripcion']; ?></option>
+																																								}
+																																								?>>
+														<?php echo $res_b_cargo['descripcion']; ?></option>
 												<?php
 												};
 												?>
 											</select>
-										</div>
-									</div>
-									<div class="item form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Semestre<span class="required">:</span>
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<select type="text" id="semestre" name="semestre" class="form-control col-md-7 col-xs-12" value='<?php echo $id_semestre; ?>'>
-												<option>Seleccionar semestre</option>
-												<?php
-												$buscar_semestre = buscarSemestre($conexion);
-												while ($res_b_semestre = mysqli_fetch_array($buscar_semestre)) {
-													$id_b_semestre = $res_b_semestre['id'];
-												?>
-													<option value="<?php echo $id_b_semestre; ?>" <?php if ($id_semestre === $id_b_semestre) {
-														echo "selected";
-													} ?>><?php echo $res_b_semestre['descripcion']; ?></option>
-												<?php
-												};
-												?>
-											</select>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Créditos :
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="creditos" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_unidad_didactica['creditos']; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Hora :
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="hora" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_unidad_didactica['horas']; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tipo :
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="tipo" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_unidad_didactica['tipo']; ?>">
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Orden :
-										</label>
-										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" name="orden" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo $res_buscar_unidad_didactica['orden']; ?>">
 										</div>
 									</div>
 									<div class="ln_solid"></div>
 									<div class="form-group">
 										<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-											<a href="./unidad_didactica.php" class="btn btn-warning	" type="button">Cancelar</a>
+											<a href="./docentes.php" class="btn btn-primary" type="button">Retroceder</a>
 											<button type="submit" class="btn btn-success">Actualizar Datos</button>
 										</div>
 									</div>

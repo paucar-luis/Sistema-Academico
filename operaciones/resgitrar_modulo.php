@@ -13,7 +13,7 @@ $nro_modulo = $_POST['nro_modulo'];
     if ($ejec_sql) {
         echo "<script>
                 alert('Registro Exitoso');
-                window.location= '../modulo_formativo.php'
+                window.location= '../modulo.php'
     			</script>";
     }else{
         echo "<script>

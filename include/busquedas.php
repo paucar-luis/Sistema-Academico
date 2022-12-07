@@ -98,4 +98,12 @@ function BuscarPresentePeriodoAcademico($conexion){
     $sql = "SELECT * FROM presente_periodo_acad";
     return mysqli_query($conexion, $sql);
 }
+function buscarDocenteByDni($conexion, $dni){
+    $sql = "SELECT * FROM docente WHERE dni='$dni'";
+    return mysqli_query($conexion, $sql);
+}
+function buscarUsuarioDocente ($conexion){
+    $sql = "SELECT*FROM usuarios_docentes";
+    return mysqli_query($conexion, $sql);
+}
 ?>
