@@ -1,7 +1,8 @@
 <?php
-include('./include/conexion.php');
-include('./include/busquedas.php');
+include "include/conexion.php";
+include "include/busquedas.php";
 include "include/verificar_sesion.php";
+
 
 $id_p_periodo= $_GET['id'];
 $busc_p_periodo = BuscarPresentePeriodoAcademico($conexion, $id_p_periodo);

@@ -3,6 +3,8 @@ include "include/conexion.php";
 include "include/busquedas.php";
 include "include/verificar_sesion.php";
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +15,7 @@ include "include/verificar_sesion.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Género | </title>
+    <title>Módulos formativos | </title>
     <!-- Bootstrap -->
     <link href="Gentella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -43,10 +45,12 @@ include "include/verificar_sesion.php";
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
-                            <div class="x_title ">
-                                <h2>Géneros</h2>
+                            <div class="x_title">
+                                <h2>Módulos Formativos</h2>
                                 <ul class="nav navbar-right">
-                                <a href="registrar_genero.php" class="btn btn-success"> Agregar nuevo</a>
+                                    <li>
+                                        <a href="./registrar_modulo.php" class="btn btn-success"> Agregar nuevo</a>
+                                    </li>
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
@@ -55,20 +59,31 @@ include "include/verificar_sesion.php";
                                 <table id="example" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Cargo</th>
+                                            <th>Identificador</th>
+                                            <th>Programa de Estudios</th>
+                                            <th>N° Módulos</th>
+                                            <th>Nombre</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $buscar_genero = buscarGenero($conexion);
-                                        while ($res_buscar_genero= mysqli_fetch_array($buscar_genero)) {
+                                        $b_modulo = buscarModulo($conexion);
+                                        while ($res_b_mod = mysqli_fetch_array($b_modulo)) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $res_buscar_genero['genero']; ?></td>
+                                                <td><?php echo $res_b_mod['id']; ?></td>
+                                                <?php 
+                                                $b_programa = buscarProgramaById($conexion, $res_b_mod['id_programa_estudio']);
+                                                $res_b_id = mysqli_fetch_array($b_programa);
+                                                ?>
+                                                <td><?php echo $res_b_id['nombre']; ?></td>
+                                                <td><?php echo $res_b_mod['nro_modulo'];  ?></td>
+                                                <td><?php echo $res_b_mod['descripcion']; ?></td>
                                                 <td>
                                                     <span class="justify-center">
-                                                    <a href="editar_genero.php?id=<?php echo $res_buscar_genero['id']; ?>" class="btn btn-primary">Editar</a>
+                                                    <a href="editar_modulo.php?id=<?php echo $res_b_mod['id']; ?>" class="btn btn-primary"><i class="fa fa-edit"> </i> Editar  </a>
+                                                    <a href="operaciones/eliminar_modulo.php?id=<?php echo $res_b_mod['id']; ?>" class="btn btn-primary">Eliminar  </a>
                                                 </td>
                                             </tr>
                                         <?php

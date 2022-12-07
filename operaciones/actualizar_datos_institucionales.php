@@ -1,6 +1,6 @@
 <?php
     include "../include/conexion.php";
-    include "../include/busquedas.php";
+
 
     $codigo = $_POST['codigo'];
     $ruc= $_POST['ruc'];

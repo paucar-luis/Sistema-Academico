@@ -1,6 +1,5 @@
 <?php 
 include "../include/conexion.php";
-include('../include/busquedas.php');
 
 
 $nombre  = $_POST['nombre'];
